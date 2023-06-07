@@ -18,7 +18,7 @@ try:
     camera = cv.VideoCapture(0)
     camera.set(3, frameWidth)
     camera.set(4, frameHeight)
-    camera.set(10, 150)
+    camera.set(10, 150)asdas
 except Exception as error:
     print(f"--[ CAMERA INITIALIZATION ERROR ]--> {error}")
     exit()
