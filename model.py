@@ -54,3 +54,7 @@ model.compile(optimizer='adam',
 # Train Model
 model.fit([], [], epochs=10,
           validation_data=([], []))
+
+
+# save model
+model.save("license_plate_model.h5")

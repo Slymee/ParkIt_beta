@@ -21,12 +21,21 @@ plateCascade = cv.CascadeClassifier("license_plate_model.xml")
 
 
 
+
+
+def OCRresult(file_path):
+    print(file_path)
+
+
 def select_image():
     file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.jpg; *.jpeg; *.png")])
     if file_path:
         image = cv.imread(file_path)
         cvImage = cv.cvtColor(image, cv.COLOR_BGR2RGB)
-        display_image(cvImage)
+        OCRresult(file_path)
+        # display_image(cvImage)
+
+
 
 def display_image(cvImage):
     # Get the window size
@@ -51,6 +60,7 @@ def display_image(cvImage):
     canvas = np.zeros((window_height, window_width, 3), dtype=np.uint8)
 
     # Calculate the position to ceImage.shape[1]) // 2
+    x= (window_width - cvImage.shape[1]) // 2
     y = (window_height - cvImage.shape[0]) // 2
 
     # Paste the resized image onto the canvas
@@ -70,6 +80,8 @@ window.title("Image Viewer")
 # Create buttons
 select_button = tk.Button(window, text="Select Image", command=select_image)
 select_button.pack(pady=10)
+
+
 
 generate_button = tk.Button(window, text="Generate ROI", command=generate_roi)
 generate_button.pack(pady=10)
