@@ -9,6 +9,7 @@ import pytesseract
 
 from plate_extraction import detectPlate
 from character_segment import charSegment
+from plate_contours_detect import detectContours
 
 #Execute OCR Engine
 # os.environ['TESSDATA_PREFIX'] = os.path.normpath(
@@ -28,7 +29,8 @@ def detectionModule(filePath):
     cvImage=cv.imread(filePath)
 
     vehicleImage, licensePlate = detectPlate(cvImage)
-    dimentions, imageDilate= charSegment(licensePlate)
+    dimentions, imageDilate = charSegment(licensePlate)
+    charList = detectContours(dimentions, imageDilate)
 
     
     #diplay image with bounding box
