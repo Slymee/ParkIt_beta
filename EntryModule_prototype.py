@@ -5,21 +5,16 @@ from PIL import Image, ImageTk
 import cv2 as cv
 import numpy as np
 import keras
-import pytesseract
-from tess_file import displayOCR_Result
+
 import os
+import time
+from datetime import date
 
 from plate_extraction import detectPlate
 from character_segment import charSegment
 from plate_contours_detect import detectContours
 from results import displayResult
 
-
-#Execute OCR Engine
-# os.environ['TESSDATA_PREFIX'] = os.path.normpath(
-#     r'D:/Program Files/Tesseract-OCR/tessdata/')
-# pytesseract.pytesseract.tesseract_cmd = r'D:\Program Files\Tesseract-OCR\tesseract.exe'
-# myConfig = r"--psm 6 -- oem 3"
 
 
 
