@@ -26,7 +26,8 @@ def detectContours(dimentions, imageDilate):
         intX, intY, intWidth, intHeight = cv.boundingRect(cntr)
         
         #checking the dimensions of the contour to filter out the characters by contour's size
-        if intWidth > lowerWidth and intWidth < upperWidth and intHeight > lowerHeight and intHeight < upperHeight :
+        if True:
+        # if intWidth > lowerWidth and intWidth < upperWidth and intHeight > lowerHeight and intHeight < upperHeight :
             x_cntrList.append(intX) #stores the x coordinate of the character's contour, to used later for indexing the contours
 
             charCopy = np.zeros((44,24))
@@ -46,7 +47,8 @@ def detectContours(dimentions, imageDilate):
 
             imgRes.append(charCopy) #List that stores the character's binary image (unsorted)
 
-    #Return characters on ascending order with respect to the x-coordinate (most-left character first)
+
+    #return characters on ascending order with respect to the x-coordinate (most-left character first)
     
     #arbitrary function that stores sorted list of character indeces
     indices = sorted(range(len(x_cntrList)), key=lambda k: x_cntrList[k])
