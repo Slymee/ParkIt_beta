@@ -25,7 +25,7 @@ def displayResult(model, char_list):
         # y_ = model.predict_classes(img)[0] #predicting the class
         # y_ = np.argmax(model.predict_classes(img), axis=-1)
         y_ = np.argmax(model.predict(img), axis=-1)[0]
-        character = dic[y_] #
+        character = dic[y_]
         output.append(character) #storing the result in a list
         
     plate_number = ''.join(output)

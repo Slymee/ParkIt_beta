@@ -51,12 +51,10 @@ def detectionModule(filePath):
 
     charList = detectContours(dimentions, imageDilate)
 
-
-    print(charList)
-
     # #load up character recognition model
     model=keras.models.load_model('model.h5')
-    print(displayResult(model, charList))
+    plateValue=displayResult(model, charList)
+    print(plateValue)
 
 
 
