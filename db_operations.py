@@ -114,11 +114,22 @@ def vehicleExit(vehi_plate, vehi_exit_date, vehi_exit_time):
         
         price = basePrice + time_diff_in_hour * increamentPrice
 
-        print(f"You parked for {time_diff_in_hour} hour. Your total price is {price}")
+        printBill=(f"You parked for {time_diff_in_hour} hour. Your total price is {price}")
+        print(printBill)
 
+        insertSQL= f"INSERT INTO all_vehicle_table(vehi_plate, vehi_entry_date, vehi_entry_time, vehi_fees) VALUES('{vehi_plate}','{vehi_entry_date}','{vehi_entry_time}','{price}')"
+        deleteSQL = f"DELETE FROM current_vehicle_table WHERE vehi_plate='{vehi_plate}'"
+        cursor.execute(insertSQL)
+        cursor.execute(deleteSQL)
+        dbConnect.commit()
+
+        guiMessageDisplay(printBill)
 
     else:
         print("New vehicle cannot exit")
+
+    cursor.close()
+    dbConnect.close()
 
         # entry_day = int(str(vehi_entry_date).split("-")[2])
         # exit_day = int(str(vehi_exit_date).split("-")[2])
@@ -153,8 +164,7 @@ def vehicleExit(vehi_plate, vehi_exit_date, vehi_exit_time):
     #     print("No data found")
 
         
-    cursor.close()
-    dbConnect.close()
+
 
 
 
