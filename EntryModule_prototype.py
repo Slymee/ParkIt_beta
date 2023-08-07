@@ -130,7 +130,7 @@ def exitDisplayImage():
     if filePath:
         #open image
         image = Image.open(filePath)
-        #resize image
+        #thumbnail size
         image.thumbnail((800,600))
 
         tkImage=ImageTk.PhotoImage(image)
@@ -146,15 +146,19 @@ def exitDisplayImage():
         exit()
     exitDetectionModule(filePath)
 
+    
 
 
-
+def closeGUI():
+    window.destroy()
 
 
 
 #display main image label
 mainImageLabel = tk.Label(window)
 mainImageLabel.pack()
+
+window.attributes('-fullscreen', True)
 
 #create buttons
 selectButton = tk.Button(window, text="Entry Vehicle", command=entryDisplayImage)
@@ -163,6 +167,8 @@ selectButton.pack(pady=10)
 exitButton = tk.Button(window, text="Exit Vehicle", command=exitDisplayImage)
 exitButton.pack(pady=10)
 
+closeButton = tk.Button(window, text="Exit Window", command=closeGUI)
+closeButton.pack(pady=10)
 
 window.mainloop()
 

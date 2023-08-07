@@ -1,18 +1,29 @@
 import mysql.connector
 import tkinter as tk
 from datetime import datetime
+from tkinter import font
 
 
 # from tkinter import *
 # from tkinter import filedialog
 
 def guiMessageDisplay(message):
-    window = tk.Tk()
+    def closeGUI():
+        window.destroy()
 
-    label = tk.Label(window, text=" ")
+    window = tk.Tk()
+    window.geometry("400x100")
+
+    fontBold=font.Font(family="Helvetica", size=22, weight="bold")
+
+    label = tk.Label(window, text=" ",  font=fontBold)
     label.pack()
 
     label.config(text=message)
+
+    closeButton=tk.Button(window, text="Close", command=closeGUI)
+    closeButton.pack(pady=10)
+
 
     window.mainloop()
 
@@ -127,6 +138,7 @@ def vehicleExit(vehi_plate, vehi_exit_date, vehi_exit_time):
 
     else:
         print("New vehicle cannot exit")
+        guiMessageDisplay("Vehicle doesn't exist!!")
 
     cursor.close()
     dbConnect.close()
